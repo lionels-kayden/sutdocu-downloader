@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "DocuCapture Pro",
+  "version": "1.0.0",
+  "description": "Download documents from viewers as high-quality PDF using coordinate-based screenshots.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "DocuCapture"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/jspdf.umd.min.js", "content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/jspdf.umd.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
